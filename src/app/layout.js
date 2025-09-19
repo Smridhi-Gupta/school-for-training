@@ -1,5 +1,6 @@
 import { Geist, Geist_Mono } from "next/font/google";
-import "./globals.css";
+// import './styles/globals.css';
+import './globals.css'
 import Header from "@/components/sections/Header";
 import Footer from "@/components/sections/Footer";
 
@@ -20,14 +21,12 @@ export const metadata = {
 
 export default function RootLayout({ children }) {
   return (
-    <html lang="en">
-      <body
-
-      >
+    <html lang="en" className="dark"> {/* ✅ Dark mode enabled */}
+      <body className={`${geistSans.variable} ${geistMono.variable} font-sans bg-white text-gray-900 dark:bg-gray-900 dark:text-gray-100`}>
         {/* ✅ Header Added */}
         <Header />
         {children}
-        {/* Agar future me Footer chahiye ho to yahan bhi add kar lena */}
+        {/* ✅ Footer Added */}
         <Footer />
       </body>
     </html>
