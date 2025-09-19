@@ -21,7 +21,7 @@ export const metadata = {
 
 export default function RootLayout({ children }) {
   return (
-    <html lang="en" className="dark"> {/* ✅ Dark mode enabled */}
+    <html lang="en"> {/* ✅ Dark mode enabled */}
       <body className={`${geistSans.variable} ${geistMono.variable} font-sans bg-white text-gray-900 dark:bg-gray-900 dark:text-gray-100`}>
         {/* ✅ Header Added */}
         <Header />
