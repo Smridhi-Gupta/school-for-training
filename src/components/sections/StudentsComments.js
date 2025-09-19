@@ -1,0 +1,99 @@
+"use client";
+
+import React from "react";
+import { motion } from "framer-motion";
+import { FaStar } from "react-icons/fa";
+
+const commentsData = [
+  {
+    name: "Alex Johnson",
+    role: "Full Stack Developer",
+    comment:
+      "The instructors were amazing! I learned practical skills that I could immediately apply in my projects. Highly recommend!",
+    rating: 5,
+  },
+  {
+    name: "Sofia Lee",
+    role: "Data Analyst",
+    comment:
+      "The live classes were interactive and engaging. I loved the real-time feedback and hands-on exercises.",
+    rating: 4,
+  },
+  {
+    name: "Michael Smith",
+    role: "Cybersecurity Enthusiast",
+    comment:
+      "A fantastic learning experience! The content was structured perfectly and helped me advance my career.",
+    rating: 5,
+  },
+  {
+    name: "Emily Davis",
+    role: "UI/UX Designer",
+    comment:
+      "Loved the interactive sessions! They helped me polish my portfolio and land my first design job.",
+    rating: 5,
+  },
+];
+
+const StudentsComments = () => {
+  return (
+    <section className="bg-gray-50 py-16 px-6 md:px-20 overflow-hidden">
+      <h2 className="text-3xl md:text-4xl font-bold text-gray-800 text-center mb-12">
+        What Our Students Say
+      </h2>
+
+      {/* Auto Scrolling Slider */}
+      <div className="overflow-hidden relative">
+        <motion.div
+          className="flex gap-8"
+          animate={{ x: ["0%", "-100%"] }}
+          transition={{
+            repeat: Infinity,
+            duration: 25,
+            ease: "linear",
+          }}
+        >
+          {[...commentsData, ...commentsData].map((item, index) => (
+            <div
+              key={index}
+              className="min-w-[320px] md:min-w-[380px] lg:min-w-[420px] bg-white p-6 mb-6 rounded-2xl shadow-md hover:shadow-xl transition flex flex-col"
+            >
+              {/* Student Info */}
+              <div className="flex items-center mb-4">
+                {/* Grey Avatar Placeholder */}
+                <div className="w-14 h-14 rounded-full bg-gray-300 flex items-center justify-center mr-4">
+                  <span className="text-gray-600 font-bold text-lg">
+                    {item.name.charAt(0)}
+                  </span>
+                </div>
+
+                {/* Name & Role */}
+                <div>
+                  <h4 className="text-gray-900 font-semibold text-lg">
+                    {item.name}
+                  </h4>
+                  <p className="text-gray-500 text-sm">{item.role}</p>
+
+                  {/* Rating */}
+                  <div className="flex mt-1">
+                    {Array.from({ length: item.rating }).map((_, i) => (
+                      <FaStar key={i} className="text-yellow-400 text-sm" />
+                    ))}
+                    {Array.from({ length: 5 - item.rating }).map((_, i) => (
+                      <FaStar key={i} className="text-gray-300 text-sm" />
+                    ))}
+                  </div>
+                </div>
+              </div>
+
+              {/* Comment */}
+              <p className="text-gray-700 text-base italic">{item.comment}</p>
+            </div>
+          ))}
+        </motion.div>
+      </div>
+    </section>
+  );
+};
+
+export default StudentsComments;
